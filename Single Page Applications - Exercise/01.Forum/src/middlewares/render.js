@@ -8,6 +8,6 @@ const ctxRenderer = (template) => {
 
 export const renderer = (ctx, next) => {
     ctx.render = ctxRenderer;
-    
+
     next();
 }
