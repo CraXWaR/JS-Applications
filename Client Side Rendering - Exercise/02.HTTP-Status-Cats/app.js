@@ -1,7 +1,7 @@
-import { html, render} from "../node_modules/lit-html/lit-html.js"
+import { html, render } from "../node_modules/lit-html/lit-html.js"
 import { cats } from "./catSeeder.js"
 
-let cardTemplate = (c) => html `
+let cardTemplate = (c) => html`
 <li> 
     <img src = "./images/${c.imageLocation}.jpg" width="250" height="250">
     <div class="info">

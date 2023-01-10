@@ -10,7 +10,7 @@ function lockedProfile() {
                 const profile = createProfile(p, index);
                 main.appendChild(profile);
             })
-        .catch(e => { console.log('Error') });
+                .catch(e => { console.log('Error') });
         });
 
     main.addEventListener('click', (e) => {

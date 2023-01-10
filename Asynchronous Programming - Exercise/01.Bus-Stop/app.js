@@ -3,8 +3,8 @@ async function getInfo() {
 
     const stopId = document.getElementById('stopId').value;
     const stopNameElement = document.getElementById('stopName');
-	const timetableElement = document.getElementById('buses');
-    
+    const timetableElement = document.getElementById('buses');
+
     const url = (`http://localhost:3030/jsonstore/bus/businfo/${stopId}`);
 
     try {
@@ -17,17 +17,17 @@ async function getInfo() {
         }
 
         const data = await res.json();
-        stopNameElement.textContent= data.name;
+        stopNameElement.textContent = data.name;
 
         Object.entries(data.buses).forEach(b => {
             const liElement = document.createElement('li');
             liElement.textContent = `Bus ${b[0]} arrives in ${b[1]} minutes`;
             timetableElement.appendChild(liElement);
         })
-        
+
     }
     catch {
         stopNameElement.textContent = "Error";
     }
-    
+
 }

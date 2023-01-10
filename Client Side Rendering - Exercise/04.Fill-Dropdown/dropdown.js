@@ -1,4 +1,4 @@
-import { html, render} from "../node_modules/lit-html/lit-html.js"
+import { html, render } from "../node_modules/lit-html/lit-html.js"
 
 async function getAllItems() {
     const response = await fetch('http://localhost:3030/jsonstore/advanced/dropdown')
@@ -8,7 +8,7 @@ async function getAllItems() {
 
 let items = Object.values(await getAllItems())
 
-let cardTemplate = html `${items.map((item) => html `<option value=${item._id}>${item.text}</option>`)}`
+let cardTemplate = html`${items.map((item) => html`<option value=${item._id}>${item.text}</option>`)}`
 let main = document.getElementById('menu')
 render(cardTemplate, main)
 
@@ -20,17 +20,17 @@ async function addItem(e) {
     let text = document.querySelector('#itemText').value
     const response = await fetch('http://localhost:3030/jsonstore/advanced/dropdown', {
         method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text}),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text }),
     })
-    
+
     let data = await response.json()
-    
+
     items.push(data)
 
-    if (response.ok) { 
-        document.querySelector('#itemText').value = '' 
-        cardTemplate = html `${items.map((item) => html `<option value=${item._id}>${item.text}</option>`)}`
+    if (response.ok) {
+        document.querySelector('#itemText').value = ''
+        cardTemplate = html`${items.map((item) => html`<option value=${item._id}>${item.text}</option>`)}`
         render(cardTemplate, main)
     }
 }
